@@ -1,17 +1,5 @@
 --- a/net/minecraft/world/IInventory.java
 +++ b/net/minecraft/world/IInventory.java
-@@ -9,6 +9,11 @@
- import net.minecraft.world.level.World;
- import net.minecraft.world.level.block.entity.TileEntity;
- 
-+// CraftBukkit start
-+import net.minecraft.world.item.crafting.RecipeHolder;
-+import org.bukkit.craftbukkit.entity.CraftHumanEntity;
-+// CraftBukkit end
-+
- public interface IInventory extends Clearable {
- 
-     float DEFAULT_DISTANCE_BUFFER = 4.0F;
 @@ -25,9 +30,7 @@
  
      void setItem(int i, ItemStack itemstack);
