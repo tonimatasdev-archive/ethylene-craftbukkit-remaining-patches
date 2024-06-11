@@ -73,24 +73,6 @@
      }
  
      public <C extends IInventory, T extends IRecipe<C>> List<RecipeHolder<T>> getAllRecipesFor(Recipes<T> recipes) {
-@@ -112,7 +142,7 @@
-     }
- 
-     private <C extends IInventory, T extends IRecipe<C>> Collection<RecipeHolder<T>> byType(Recipes<T> recipes) {
--        return this.byType.get(recipes);
-+        return (Collection) this.byType.get(recipes); // CraftBukkit - decompile error
-     }
- 
-     public <C extends IInventory, T extends IRecipe<C>> NonNullList<ItemStack> getRemainingItemsFor(Recipes<T> recipes, C c0, World world) {
-@@ -139,7 +169,7 @@
-     private <T extends IRecipe<?>> RecipeHolder<T> byKeyTyped(Recipes<T> recipes, MinecraftKey minecraftkey) {
-         RecipeHolder<?> recipeholder = (RecipeHolder) this.byName.get(minecraftkey);
- 
--        return recipeholder != null && recipeholder.value().getType().equals(recipes) ? recipeholder : null;
-+        return recipeholder != null && recipeholder.value().getType().equals(recipes) ? (RecipeHolder) recipeholder : null; // CraftBukkit - decompile error
-     }
- 
-     public Collection<RecipeHolder<?>> getOrderedRecipes() {
 @@ -175,10 +205,31 @@
              com_google_common_collect_immutablemap_builder.put(recipeholder.id(), recipeholder);
          }
