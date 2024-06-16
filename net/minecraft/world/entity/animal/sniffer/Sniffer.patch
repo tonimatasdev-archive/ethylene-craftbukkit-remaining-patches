@@ -14,21 +14,3 @@
                  entityitem.setDefaultPickUpDelay();
                  worldserver.addFreshEntity(entityitem);
              }
-@@ -313,7 +320,7 @@
-         List<GlobalPos> list = (List) this.getExploredPositions().limit(20L).collect(Collectors.toList());
- 
-         list.add(0, GlobalPos.of(this.level().dimension(), blockposition));
--        this.getBrain().setMemory(MemoryModuleType.SNIFFER_EXPLORED_POSITIONS, (Object) list);
-+        this.getBrain().setMemory(MemoryModuleType.SNIFFER_EXPLORED_POSITIONS, list); // CraftBukkit - decompile error
-         return this;
-     }
- 
-@@ -454,7 +461,7 @@
- 
-     @Override
-     public BehaviorController<Sniffer> getBrain() {
--        return super.getBrain();
-+        return (BehaviorController<Sniffer>) super.getBrain(); // CraftBukkit - decompile error
-     }
- 
-     @Override

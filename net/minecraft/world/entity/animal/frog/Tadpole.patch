@@ -11,15 +11,6 @@
  public class Tadpole extends EntityFish {
  
      @VisibleForTesting
-@@ -71,7 +75,7 @@
- 
-     @Override
-     public BehaviorController<Tadpole> getBrain() {
--        return super.getBrain();
-+        return (BehaviorController<Tadpole>) super.getBrain(); // CraftBukkit - decompile error
-     }
- 
-     @Override
 @@ -232,9 +236,15 @@
                  }
  

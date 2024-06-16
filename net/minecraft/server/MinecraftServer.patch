@@ -552,15 +552,6 @@
          }
  
          MinecraftServer.LOGGER.info("Saving worlds");
-@@ -706,7 +991,7 @@
-             }
- 
-             this.nextTickTimeNanos = SystemUtils.getNanos();
--            this.statusIcon = (ServerPing.a) this.loadStatusIcon().orElse((Object) null);
-+            this.statusIcon = (ServerPing.a) this.loadStatusIcon().orElse(null); // CraftBukkit - decompile error
-             this.status = this.buildServerStatus();
- 
-             while (this.running) {
 @@ -723,6 +1008,7 @@
                      if (j > MinecraftServer.OVERLOADED_THRESHOLD_NANOS + 20L * i && this.nextTickTimeNanos - this.lastOverloadWarningNanos >= MinecraftServer.OVERLOADED_WARNING_INTERVAL_NANOS + 100L * i) {
                          long k = j / i;
@@ -606,15 +597,6 @@
      }
  
      protected void waitUntilNextTick() {
-@@ -901,7 +1201,7 @@
-         }
-     }
- 
--    protected void doRunTask(TickTask ticktask) {
-+    public void doRunTask(TickTask ticktask) { // CraftBukkit - decompile error
-         this.getProfiler().incrementCounter("runTask");
-         super.doRunTask(ticktask);
-     }
 @@ -960,8 +1260,10 @@
          }
  
@@ -732,15 +714,6 @@
                  @Override
                  public <T extends GameRules.GameRuleValue<T>> void visit(GameRules.GameRuleKey<T> gamerules_gamerulekey, GameRules.GameRuleDefinition<T> gamerules_gameruledefinition) {
                      list.add(String.format(Locale.ROOT, "%s=%s\n", gamerules_gamerulekey.getId(), gamerules.getRule(gamerules_gamerulekey)));
-@@ -1952,7 +2288,7 @@
-             try {
-                 label51:
-                 {
--                    ArrayList arraylist;
-+                    ArrayList<NativeModuleLister.a> arraylist; // CraftBukkit - decompile error
- 
-                     try {
-                         arraylist = Lists.newArrayList(NativeModuleLister.listModules());
 @@ -2002,6 +2338,22 @@
  
      }

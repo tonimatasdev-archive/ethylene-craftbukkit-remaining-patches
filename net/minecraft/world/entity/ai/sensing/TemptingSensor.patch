@@ -15,15 +15,6 @@
  public class TemptingSensor extends Sensor<EntityCreature> {
  
      public static final int TEMPTATION_RANGE = 10;
-@@ -30,7 +38,7 @@
- 
-     protected void doTick(WorldServer worldserver, EntityCreature entitycreature) {
-         BehaviorController<?> behaviorcontroller = entitycreature.getBrain();
--        Stream stream = worldserver.players().stream().filter(IEntitySelector.NO_SPECTATORS).filter((entityplayer) -> {
-+        Stream<net.minecraft.server.level.EntityPlayer> stream = worldserver.players().stream().filter(IEntitySelector.NO_SPECTATORS).filter((entityplayer) -> { // CraftBukkit - decompile error
-             return TemptingSensor.TEMPT_TARGETING.test(entitycreature, entityplayer);
-         }).filter((entityplayer) -> {
-             return entitycreature.closerThan(entityplayer, 10.0D);
 @@ -44,7 +52,17 @@
          if (!list.isEmpty()) {
              EntityHuman entityhuman = (EntityHuman) list.get(0);

@@ -21,12 +21,3 @@
                  ChunkCoordIntPair chunkcoordintpair1 = new ChunkCoordIntPair(nbttagcompound1.getInt("xPos"), nbttagcompound1.getInt("zPos"));
  
                  if (!chunkcoordintpair1.equals(chunkcoordintpair)) {
-@@ -316,7 +316,7 @@
-                         WorldUpgrader.c<T> worldupgrader_c = (WorldUpgrader.c) iterator.next();
-                         ResourceKey<World> resourcekey = worldupgrader_c.dimensionKey;
-                         ListIterator<WorldUpgrader.e> listiterator = worldupgrader_c.files;
--                        T t0 = (AutoCloseable) worldupgrader_c.storage;
-+                        T t0 = (T) worldupgrader_c.storage; // CraftBukkit - decompile error
- 
-                         if (listiterator.hasNext()) {
-                             WorldUpgrader.e worldupgrader_e = (WorldUpgrader.e) listiterator.next();

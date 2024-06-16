@@ -51,15 +51,6 @@
              BufferedWriter bufferedwriter = Files.newBufferedWriter(path, StandardCharsets.UTF_8);
  
              try {
-@@ -125,7 +150,7 @@
-     private static <V extends Number> Function<String, V> wrapNumberDeserializer(Function<String, V> function) {
-         return (s) -> {
-             try {
--                return (Number) function.apply(s);
-+                return (V) function.apply(s); // CraftBukkit - decompile error
-             } catch (NumberFormatException numberformatexception) {
-                 return null;
-             }
 @@ -144,7 +169,7 @@
  
      @Nullable
@@ -86,15 +77,6 @@
          String s1 = this.getStringRaw(s);
          V v1 = MoreObjects.firstNonNull(s1 != null ? function.apply(s1) : null, v0);
  
-@@ -172,7 +207,7 @@
-         V v1 = MoreObjects.firstNonNull(s1 != null ? function.apply(s1) : null, v0);
- 
-         this.properties.put(s, function1.apply(v1));
--        return new PropertyManager.EditableProperty<>(s, v1, function1);
-+        return new PropertyManager.EditableProperty(s, v1, function1); // CraftBukkit - decompile error
-     }
- 
-     protected <V> V get(String s, Function<String, V> function, UnaryOperator<V> unaryoperator, Function<V, String> function1, V v0) {
 @@ -236,7 +271,7 @@
          return properties;
      }
@@ -104,15 +86,6 @@
  
      public class EditableProperty<V> implements Supplier<V> {
  
-@@ -244,7 +279,7 @@
-         private final V value;
-         private final Function<V, String> serializer;
- 
--        EditableProperty(final String s, final Object object, final Function function) {
-+        EditableProperty(final String s, final V object, final Function function) { // CraftBukkit - decompile error
-             this.key = s;
-             this.value = object;
-             this.serializer = function;
 @@ -258,7 +293,7 @@
              Properties properties = PropertyManager.this.cloneProperties();
  
